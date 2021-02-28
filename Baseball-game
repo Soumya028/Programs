@@ -1,0 +1,28 @@
+// Problem: https://leetcode.com/problems/baseball-game/
+
+// Solution
+
+class Solution {
+    public int calPoints(String[] ops) {
+     int[] stack = new int[ops.length];
+        int pos = -1,result = 0;
+        for(int i = 0; i < ops.length; i++) {
+            switch(ops[i]) {
+                case "C":
+                    stack[pos] = 0;
+                    pos--;
+                    break;
+                case "D":
+                    stack[++pos] = stack[pos-1]*2;
+                    break;
+                case "+":
+                    stack[++pos] = stack[pos-1]+stack[pos-2];
+                    break;
+                default :
+                    stack[++pos] = Integer.valueOf(ops[i]);
+            }
+        }
+        for(int i : stack) result+=i;
+        return result;   
+    }
+}
