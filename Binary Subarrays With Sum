@@ -1,0 +1,19 @@
+// Problem: https://leetcode.com/problems/binary-subarrays-with-sum/
+
+// Solution:
+
+class Solution {
+    public int numSubarraysWithSum(int[] arr, int target) {
+        int freq[] = new int[30001];
+        freq[0] = 1;
+        
+        int ei = 0, answer = 0, prefixSum = 0;
+        
+        while(ei<arr.length){
+            prefixSum += arr[ei++];
+            if(prefixSum - target >= 0) answer += freq[prefixSum - target];
+            freq[prefixSum]++;
+        }
+        return answer;
+    }
+}
