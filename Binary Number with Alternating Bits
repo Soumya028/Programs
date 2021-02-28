@@ -1,0 +1,17 @@
+// Problem: https://leetcode.com/problems/binary-number-with-alternating-bits/
+
+// Solution
+
+class Solution {
+    public boolean hasAlternatingBits(int n) {
+        int prev=0,cur=-1;
+        while(n!=0){
+            prev=cur;
+            cur=n&1;
+            if(prev==cur)
+                return false;
+            n>>=1;
+        }
+        return true;
+    }
+}
