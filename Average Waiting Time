@@ -1,0 +1,28 @@
+// Problem: https://leetcode.com/problems/average-waiting-time/
+
+// Solution:
+
+class Solution {
+    public double averageWaitingTime(int[][] customers) {
+        double ans = 0.0;
+        int[] customer = customers[0];
+        int total = customer[0] + customer[1]; 
+        int diff = 0;
+        ans += customer[1];
+        for(int k=1; k<customers.length; k++){
+            customer = customers[k];
+            if(customer[0]<total){
+                diff = total - customer[0];
+                customer[0] += diff;                
+            }
+            else 
+            {
+                diff =  0;
+            }
+            total =  customer[0] + customer[1]; 
+            ans += diff;
+            ans += customer[1];
+        }
+        return ans / customers.length;
+    }
+}
