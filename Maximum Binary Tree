@@ -1,0 +1,27 @@
+// Problem:  https://leetcode.com/problems/maximum-binary-tree/
+
+// Solution:
+
+class Solution {
+    public TreeNode constructMaximumBinaryTree(int[] nums) {
+        return constructMaximumTree(nums, 0, nums.length - 1);
+	}
+
+	private TreeNode constructMaximumTree(int[] nums, int low, int high) {
+		if (low > high) {
+			return null;
+		}
+		int maxValue = nums[low];
+		int position = low;
+		for (int i = low + 1; i <= high; i++) {
+			if (nums[i] > maxValue) {
+				maxValue = nums[i];
+				position = i;
+			}
+		}
+		TreeNode node = new TreeNode(maxValue);
+		node.left = constructMaximumTree(nums, low, position - 1);
+		node.right = constructMaximumTree(nums, position + 1, high);
+		return node;
+    }
+}
