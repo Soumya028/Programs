@@ -1,0 +1,24 @@
+// Problem: https://leetcode.com/problems/beautiful-arrangement/
+
+// Solution:
+
+class Solution {
+int count;
+    public int countArrangement(int n) {
+        count=0;
+        boolean visited[]=new boolean[n+1];
+        countPemutations(visited,1,n);
+        return count;
+    }
+    void countPemutations(boolean[] visited,int start,int N){
+        if(start>N)
+            count++;
+        for(int i=1;i<=N;i++){
+            if(!visited[i]&&(start%i==0||i%start==0)){
+                visited[i]=true;
+                countPemutations(visited,start+1,N);
+                visited[i]=false;  
+            }   
+        }
+    }
+}
