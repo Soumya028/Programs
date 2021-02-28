@@ -1,0 +1,26 @@
+// Problem: https://leetcode.com/problems/2-keys-keyboard/
+
+// Solution:
+class Solution {
+    public int minSteps(int n) {
+       switch(n){
+            case 1:
+                return 0;
+        }
+        int answer = 1;
+        int currLetters = 1;
+        int pasteRate = 1;
+        while(currLetters != n){
+            currLetters += pasteRate;
+            answer++;
+            if(currLetters == n){
+                break;
+            }
+            else if(n % currLetters == 0){
+                pasteRate = currLetters;
+                answer++;
+            }
+        }
+        return answer; 
+    }
+}
