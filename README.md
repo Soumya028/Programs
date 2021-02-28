@@ -1,1 +1,1 @@
-This programs are written by Sowmya Maddinapudi.
+This repository is owned by Sowmya Maddinapudi. I am doing my final year of engineering [Computer Science and Engineering] in GITAM school of technology, Bengaluru. This programs are written by me.All these problems are writtene during my engineering which are taken from hackerrank and leetcode.
