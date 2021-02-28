@@ -1,0 +1,44 @@
+// Problem: https://leetcode.com/problems/binary-tree-coloring-game/
+
+// Solution:class Solution { 
+    int x ;
+    int leftNodes;
+    int rightNodes;
+    int n;
+    int maxNodes;
+    public boolean btreeGameWinningMove(TreeNode root, int n, int x) {
+        
+        this.x = x;
+        this.leftNodes = 0;
+        this.rightNodes = 0;
+        this.n = n;
+        this.maxNodes = 0;
+        findX(root);
+        return maxNodes > n/2;
+    }
+    public void findX(TreeNode cur)
+    {
+        if(cur == null) return;    
+        if(cur.val == x)
+       {
+            leftNodes = dfs(cur.left);
+            rightNodes = dfs(cur.right);
+            int parentNodes = n - (leftNodes + rightNodes) - 1;
+            maxNodes = Math.max(maxNodes,Math.max(parentNodes, Math.max(leftNodes,rightNodes)));
+            return;
+        }
+        else {
+            findX(cur.left);
+            findX(cur.right);
+        }
+    }
+    public int dfs(TreeNode cur)
+    {
+        if(cur == null) return 0;
+        int left = dfs(cur.left);
+        int right = dfs(cur.right);
+        return left + right + 1;
+    }
+    
+}
+
