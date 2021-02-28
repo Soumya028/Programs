@@ -1,0 +1,19 @@
+// Problem: https://leetcode.com/problems/consecutive-characters/
+
+// Solution:
+
+class Solution {
+    public int maxPower(String s) {
+        var max = 1;
+        var maxSoFar = 1;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i - 1) == s.charAt(i)) {
+                maxSoFar++;
+                max = Math.max(max, maxSoFar);
+            } else {
+                maxSoFar = 1;
+            }
+        }
+        return max; 
+    }
+}
