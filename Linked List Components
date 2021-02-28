@@ -1,0 +1,25 @@
+// Problem: https://leetcode.com/problems/linked-list-components/
+
+// Solution:
+
+class Solution {
+    public int numComponents(ListNode head, int[] G) {
+        
+   boolean[] values = new boolean[10001];
+        for (int num : G) {
+            values[num] = true;
+        }
+
+        ListNode current = head;
+        int count = 0;
+
+        while (current != null) {
+            if (values[current.val] && (current.next == null || !values[current.next.val])) {
+                count++;
+            }
+            current = current.next;
+        }
+
+        return count;
+    }
+}
