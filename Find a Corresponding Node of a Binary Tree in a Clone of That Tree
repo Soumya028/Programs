@@ -1,0 +1,25 @@
+// Problem: https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/
+
+// Solution:
+
+class Solution {
+ boolean found = false;
+    public final TreeNode getTargetCopy(final TreeNode o, final TreeNode c, final TreeNode t) {
+        if(found || (o == null && c == null))
+            return null;
+        
+        TreeNode left = getTargetCopy(o.left, c.left, t);
+        
+        if(o.val == t.val && c.val == t.val){
+            found = true;
+            return c;
+        }
+        
+        TreeNode right = getTargetCopy(o.right, c.right, t);
+        
+        if(left != null)
+            return left;
+        
+        return right;        
+    }
+}
