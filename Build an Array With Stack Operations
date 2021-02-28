@@ -1,0 +1,22 @@
+// Problem: https://leetcode.com/problems/build-an-array-with-stack-operations/
+
+// Solution:
+
+class Solution {
+    public List<String> buildArray(int[] target, int n) {
+        List<String> res = new ArrayList();
+        for (int i = 1, j = 0; i <= n && j < target.length; ++i) {
+            if (target[j] == i) 
+            {
+                res.add("Push");
+                j++;
+            } 
+            else 
+            {
+                res.add("Push");
+                res.add("Pop");
+            }
+        }
+        return res;
+    }
+}
