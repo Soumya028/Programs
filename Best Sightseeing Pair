@@ -1,0 +1,16 @@
+// Problem:https://leetcode.com/problems/best-sightseeing-pair/
+
+// Solution:
+
+class Solution {
+    public int maxScoreSightseeingPair(int[] A) {
+         int result = Integer.MIN_VALUE;
+        int maxSumTill = A[0];
+        for(int i=1;i<A.length;i++)
+        {
+            result = Math.max(result,maxSumTill+A[i]-i);
+            maxSumTill = Math.max(maxSumTill,A[i]+i);
+        }
+        return result;
+    }
+}
