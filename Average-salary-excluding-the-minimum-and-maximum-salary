@@ -1,0 +1,25 @@
+// Problem: https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/
+
+// Solution:
+
+class Solution {
+    public double average(int[] salary) {
+        var min=Math.min(salary[0],salary[1]);
+        var max=Math.max(salary[0],salary[1]);
+        double avg=0;
+        var cnt = 1;
+        for (int i = 2; i < salary.length; i++) {
+            var s = salary[i];
+            if (s < min) {
+                s = min;
+                min = salary[i];
+            }
+            if (s > max) {
+                s = max;
+                max = salary[i];
+            }
+            avg += (s - avg) / cnt++;
+        }
+        return avg;
+    }
+}
