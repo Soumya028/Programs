@@ -1,0 +1,19 @@
+// Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
+
+// Solution:
+
+class Solution {
+    public int maxProfit(int[] prices, int fee) {
+        if (prices == null || prices.length == 0 || fee < 0) {
+            return 0;
+        }
+        int ans = 0;
+        int maxAdd = -1*prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            int tempAns = ans;
+            ans = Math.max(ans, prices[i] + maxAdd - fee);
+            maxAdd = Math.max(maxAdd, -1*prices[i] + tempAns);
+        }
+        return ans;
+    }
+}
