@@ -1,0 +1,30 @@
+// Problem: https://leetcode.com/problems/find-positive-integer-solution-for-a-given-equation/
+
+// Solution:
+
+class Solution {
+    public List<List<Integer>> findSolution(CustomFunction customfunction, int z) {
+       int start = 1;
+        int end = 1000;
+        int currStart = start;
+        int currEnd = end;
+        List<List<Integer>> ans = new ArrayList();
+      while(currStart <= end && currEnd>=start) {
+          int val = customfunction.f(currStart, currEnd);
+          if(val == z) {
+              List<Integer> list = new ArrayList();
+              list.add(currStart);
+              list.add(currEnd);
+              ans.add(list);
+              currStart++;
+              currEnd--;
+          } else if(val < z) {
+              currStart++;
+          } else {
+              currEnd--;
+          }
+          
+      }
+        return ans; 
+    }
+}
