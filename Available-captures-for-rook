@@ -1,0 +1,58 @@
+// Problem: https://leetcode.com/problems/available-captures-for-rook/
+
+//Solution:
+
+class Solution {
+    public int numRookCaptures(char[][] board) {
+       int row = 0;
+    int col = 0;
+    int decider = 0;
+    int counter = 0;
+    for (int i = 0; i < board.length; i++) {
+        for (int j = 0; j < board[i].length; j++) {
+            if (board[i][j] == 'R') {
+                row = i;
+                col = j;
+                decider = -1;
+                break;
+            }
+        }
+        if (decider == -1) {
+            break;
+        }
+    }
+    for (int i = col + 1; i <= 7; i++) {
+        if (board[row][i] == 'B') {
+            break;
+        } else if (board[row][i] == 'p') {
+            counter++;
+            break;
+        }
+    }
+    for (int i = col - 1; i >= 0; i--) {
+        if (board[row][i] == 'B') {
+            break;
+        } else if (board[row][i] == 'p') {
+            counter++;
+            break;
+        }
+    }
+    for (int i = row - 1; i >= 0; i--) {
+        if (board[i][col] == 'B') {
+            break;
+        } else if (board[i][col] == 'p') {
+            counter++;
+            break;
+        }
+    }
+    for (int i = row + 1; i <= 7; i++) {
+        if (board[i][col] == 'B') {
+            break;
+        } else if (board[i][col] == 'p') {
+            counter++;
+            break;
+        }
+    }
+    return counter; 
+    }
+}
