@@ -1,0 +1,24 @@
+// Problem: https://leetcode.com/problems/letter-tile-possibilities/
+
+// Solution:
+
+class Solution {
+    public int numTilePossibilities(String tiles) {
+         int[] map = new int[26];
+        for (char c: tiles.toCharArray())
+            map[c - 'A']++;
+        return backtracking(map);
+    }
+    private int backtracking(int[] map){
+        int count = 0;
+        for (int i = 0; i < 26; i++){
+            if (map[i] > 0){
+                count++;
+                map[i]--;
+                count +=backtracking(map);
+                map[i]++;
+            }
+        }
+        return count;
+    }
+}
