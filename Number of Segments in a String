@@ -1,0 +1,15 @@
+// Problem: https://leetcode.com/problems/number-of-segments-in-a-string/
+
+// Solution:
+
+class Solution {
+    public int countSegments(String s) {
+        int Count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if ((i == 0 || s.charAt(i-1) == ' ') && s.charAt(i) != ' ') {
+                Count++;
+            }
+        }
+        return Count;
+    }
+}
