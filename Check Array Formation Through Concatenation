@@ -1,0 +1,31 @@
+/Problem: https://leetcode.com/problems/check-array-formation-through-concatenation/
+
+//Solution:
+
+
+class Solution {
+    public boolean canFormArray(int[] arr, int[][] pieces) {
+        int idx = 0;
+        while (idx < arr.length) {
+            boolean isFound = false;
+            for(int[] p : pieces) {
+                if(p[0] == arr[idx]) {
+                    isFound = true;
+                    int i = 0;
+                    while (i < p.length && p[i] == arr[idx]) {
+                        i++;
+                        idx++;
+                    }
+                    if(i != p.length) {
+                        return false;
+                    }
+                    break;
+                }
+            }
+            if(!isFound) {
+                return false;
+            }
+        }
+        return true; 
+    }
+}
