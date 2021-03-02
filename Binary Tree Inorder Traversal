@@ -1,0 +1,22 @@
+Problem: https://leetcode.com/problems/binary-tree-inorder-traversal/
+
+Solutin:
+
+class Solution {
+public List inorderTraversal(TreeNode root) {
+List result = new ArrayList<>();
+dfs(root, result);
+    return result;
+}
+private void dfs(TreeNode node, List<Integer> result) {
+    if(node == null)
+        return; 
+    if(node.left == null && node.right == null){
+        result.add(node.val);
+        return;
+    } 
+    dfs(node.left, result);
+    result.add(node.val);
+    dfs(node.right, result);     
+    }
+}
