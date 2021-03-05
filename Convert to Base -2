@@ -1,0 +1,22 @@
+// Problem: https://leetcode.com/problems/convert-to-base-2/
+
+//Sol:
+
+class Solution {
+    public String baseNeg2(int N) {
+      String result = "";
+        int base=-2;
+        if(N==0)
+            return "0";
+        while (N != 0) {
+        int i = N % base;
+        N /= base;
+        if (i < 0) {
+            i += Math.abs(base);
+            N++;
+        }
+        result = i + result;
+    }
+    return result;  
+    }
+}
