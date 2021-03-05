@@ -1,0 +1,24 @@
+// Problem: https://leetcode.com/problems/clumsy-factorial/
+
+//Sol:
+
+class Solution {
+    public int clumsy(int N) {
+       return clum(N, true);
+    }
+    private int clum(int N, boolean positive) {
+        if (N <= 0) 
+            return 0;
+        int m = N;
+        int res = m;
+        if (--m > 0) 
+            res *= m;
+        if (--m > 0) 
+            res /= m;
+        if (!positive) 
+            res = -res;
+        if (--m > 0) 
+            res += m;
+        return res + clum(N-4, false);  
+    }
+}
