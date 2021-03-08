@@ -1,0 +1,24 @@
+// problem: https://leetcode.com/problems/deepest-leaves-sum/
+
+// Solution
+
+class Solution {
+    public int deepestLeavesSum(TreeNode root) {
+        int d = depth(root);
+        return helper(root, 0, d-1);
+    }
+    public int helper(TreeNode root, int d, int given) {
+        if (root != null) {
+            if (d == given)
+                return root.val;
+            return helper(root.right, d + 1, given) + helper(root.left, d + 1, given);   
+        } else
+            return 0;
+    }
+    public int depth(TreeNode root) {
+        if (root == null)
+            return 0;
+        return 1 + Math.max(depth(root.left), depth(root.right));
+        
+    }
+}
