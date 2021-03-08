@@ -1,0 +1,38 @@
+// Problem: https://leetcode.com/problems/design-browser-history/
+
+// Solution:
+
+class BrowserHistory {
+    String[] browser;
+    int indx;
+    int size;
+	
+    public BrowserHistory(String homepage) {
+        browser = new String[101];
+        indx = 0;
+        browser[indx] = homepage;
+        size = 1; 
+    }
+    
+    public void visit(String url) { 
+        browser[++indx] = url;
+        size = indx + 1;
+    }
+    
+    public String back(int steps) {
+        if ((indx - steps) < 0) // steps > back history
+            indx = 0;
+        else
+            indx = indx - steps;
+            
+        return browser[indx];
+    }
+    
+    public String forward(int steps) {
+        if ((indx + steps) >= size) // steps > forward history
+            indx = size - 1;
+        else
+            indx += steps;
+        return browser[indx];
+    }
+}
