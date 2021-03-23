@@ -1,0 +1,37 @@
+// Problem: https://leetcode.com/problems/rle-iterator/
+
+// Solution 
+
+class RLEIterator {
+
+    int[] data;
+    int index=0;
+    public RLEIterator(int[] A) {
+        data=A;
+    }
+    public int next(int n) {   
+        if(data.length==index)
+            return -1;  
+        while(n>0 && index<data.length)
+        {
+            if(data[index]<n)
+            {
+                n=n-data[index];
+                index=index+2;
+            } else if(data[index]==n)
+            {
+                int res=data[index+1];
+                index=index+2;
+                return res;
+            } else if(data[index]>n)
+            {
+                int res=data[index+1];
+                data[index]=data[index]-n;
+                return res;
+            }
+            
+        }
+        return -1;
+        
+    }
+}
