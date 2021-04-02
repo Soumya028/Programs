@@ -1,0 +1,32 @@
+// Problem: https://leetcode.com/problems/reorder-list/
+
+// Solution:
+
+class Solution {
+    public void reorderList(ListNode head) {
+        int n = 0;
+        ListNode temp = head;
+        while(temp != null){
+            n++;
+            temp = temp.next;
+        }
+        ListNode[] list = new ListNode[n];
+        temp = head;
+        n = 0;
+        while(temp != null){
+            list[n++] = temp;
+            temp = temp.next;
+        }
+        int i = 0 , j = list.length-1;
+        head = new ListNode(0);
+        temp = head;
+        while(i <= j){
+            temp.next = list[i++];
+            temp = temp.next;
+            temp.next = list[j--];
+            temp = temp.next;
+        }
+        temp.next = null;
+        head = head.next;
+    }
+}
