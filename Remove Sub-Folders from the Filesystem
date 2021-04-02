@@ -1,0 +1,20 @@
+// Problem:  https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/
+
+// Solution
+
+
+class Solution {
+    public List<String> removeSubfolders(String[] folder) {
+        Arrays.sort(folder);
+         List<String> ans=new ArrayList();
+         String main=folder[0]+"/";
+         ans.add(folder[0]);        
+        for(int i=1;i<folder.length;i++){
+            if(!folder[i].contains(main)) { 
+                ans.add(folder[i]);
+                main=folder[i]+"/";
+            }
+        }
+        return ans;
+    }
+}
