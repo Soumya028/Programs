@@ -1,0 +1,24 @@
+// Problem: https://leetcode.com/problems/reduce-array-size-to-the-half/
+
+// Solution:
+
+
+class Solution {
+    public int minSetSize(int[] arr) {
+        int length=arr.length;
+        int[] duplicate = new  int[100001]; 
+        for(int i=0;i<arr.length;i++)
+        duplicate[arr[i]]++;
+        Arrays.sort(duplicate);
+        int count=0;
+
+        for(int i=duplicate.length-1;i>=0;i--)
+        {
+            length-=duplicate[i];
+            count++;
+            if(length<=arr.length/2)
+             break;
+        }
+    return count;
+    }
+}
