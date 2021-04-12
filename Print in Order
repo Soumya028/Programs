@@ -1,0 +1,22 @@
+// Problem:  https://leetcode.com/problems/print-in-order/
+
+// Solution:
+
+class Foo {
+    private volatile int indicator = 1;
+    public Foo() {
+    }
+    public void first(Runnable printFirst) throws InterruptedException {
+        printFirst.run();
+        indicator++;
+    }
+    public void second(Runnable printSecond) throws InterruptedException {
+        while (indicator != 2);
+        printSecond.run();
+        indicator++;
+    }
+    public void third(Runnable printThird) throws InterruptedException {
+        while (indicator != 3) ;
+        printThird.run();
+    }
+}
